@@ -6,9 +6,9 @@
 package com.vo2.example.dao;
 
 import com.vo2.example.model.Person;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,15 +17,13 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class PersonDAOImpl implements IPersonDAO {
-
-    @Autowired
-    private SessionFactory sessionFactory;
+    
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     @Transactional
-    public Person findPersonById(long id) {
-        return (Person) sessionFactory.
-                getCurrentSession().
-                get(Person.class, id);
+    public Person findPersonById(long id) {       
+        return (Person) em.find(Person.class, id);
     }
 }

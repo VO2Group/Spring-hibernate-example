@@ -20,4 +20,7 @@ public interface IPersonService {
     List<Person> findAll();
 
     List<Manager> findAllManager();
+    
+    List<Person> getPersonsByName(String name);
+
 }

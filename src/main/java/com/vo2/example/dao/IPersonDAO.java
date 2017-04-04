@@ -21,4 +21,7 @@ public interface IPersonDAO {
     List<Person> findAll();
 
     List<Manager> findAllManagers();
+    
+    List<Person> searchPersonsByName(String name);
+
 }

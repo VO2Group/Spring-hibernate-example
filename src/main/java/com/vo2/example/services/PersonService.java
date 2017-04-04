@@ -8,6 +8,7 @@ package com.vo2.example.services;
 import com.vo2.example.dao.IPersonDAO;
 import com.vo2.example.model.Manager;
 import com.vo2.example.model.Person;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +37,12 @@ public class PersonService implements IPersonService {
     @Override
     public List<Manager> findAllManager() {
         return personDAO.findAllManagers();
+    }
+
+    
+    @Override
+    public List<Person> getPersonsByName(String name) {
+        return personDAO.searchPersonsByName(name);
     }
 
 }

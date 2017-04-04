@@ -43,4 +43,12 @@ public class PersonDAOImpl implements IPersonDAO {
         TypedQuery<Manager> query = em.createQuery("SELECT m FROM Manager m", Manager.class);
         return query.getResultList();
     }
+    
+    @Override
+    public List<Person> searchPersonsByName(String name) {
+        Query query = em.createQuery("FROM Person WHERE firstName LIKE :name OR lastName LIKE :name");
+        query.setParameter("name", name);
+        return query.getResultList();
+    }
+    
 }

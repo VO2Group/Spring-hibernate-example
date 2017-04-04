@@ -5,7 +5,10 @@
  */
 package com.vo2.example.dao;
 
+import com.vo2.example.model.Manager;
 import com.vo2.example.model.Person;
+
+import java.util.List;
 
 /**
  *
@@ -13,5 +16,9 @@ import com.vo2.example.model.Person;
  */
 public interface IPersonDAO {
     
-    Person findPersonById(long id);
+    Person findPersonById(Long id);
+
+    List<Person> findAll();
+
+    List<Manager> findAllManagers();
 }

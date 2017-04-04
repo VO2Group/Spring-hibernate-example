@@ -6,12 +6,7 @@
 package com.vo2.example.model;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -19,12 +14,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="person")
+@Inheritance(strategy= InheritanceType.JOINED)
 public class Person implements Serializable {
     
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="person_id")
-    private long id;
+    private Long id;
     
     @Column(name="first_name")
     private String fistName;
@@ -32,11 +28,11 @@ public class Person implements Serializable {
     @Column(name="last_name")
     private String lastName;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -5,11 +5,16 @@
  */
 package com.vo2.example.dao;
 
+import com.vo2.example.model.Manager;
 import com.vo2.example.model.Person;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  *
@@ -23,7 +28,19 @@ public class PersonDAOImpl implements IPersonDAO {
 
     @Override
     @Transactional
-    public Person findPersonById(long id) {       
-        return (Person) em.find(Person.class, id);
+    public Person findPersonById(Long id) {
+        return em.find(Person.class, id);
+    }
+
+    @Override
+    public List<Person> findAll() {
+        TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p", Person.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Manager> findAllManagers() {
+        TypedQuery<Manager> query = em.createQuery("SELECT m FROM Manager m", Manager.class);
+        return query.getResultList();
     }
 }

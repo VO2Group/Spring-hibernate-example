@@ -5,12 +5,19 @@
  */
 package com.vo2.example.services;
 
+import com.vo2.example.model.Manager;
 import com.vo2.example.model.Person;
+
+import java.util.List;
 
 /**
  *
  * @author mehdi
  */
 public interface IPersonService {
-    Person getPersonById(long id);
+    Person getPersonById(Long id);
+
+    List<Person> findAll();
+
+    List<Manager> findAllManager();
 }

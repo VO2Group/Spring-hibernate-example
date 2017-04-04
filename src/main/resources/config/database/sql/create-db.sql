@@ -41,8 +41,5 @@ CREATE TABLE client (
 CREATE TABLE mission (
   person_id BIGINT NOT NULL,
   client_id BIGINT NOT NULL,
-  title VARCHAR(50),
-  from_date DATE NOT NULL,
-  to_date DATE NULL,
   CONSTRAINT PK_MISSION_PERSON_CLIENT PRIMARY KEY (person_id, client_id)
 );

@@ -52,7 +52,7 @@ public class PersonServiceTest {
         System.out.println("getPersonById");
         Long id = 1L;
         Person result = personService.getPersonById(id);
-        assertEquals("Mehdi", result.getFistName());
+        assertEquals("Mehdi", result.getFirstName());
 
     }
 
@@ -63,7 +63,7 @@ public class PersonServiceTest {
         Manager manager = (Manager) personManager;
         assertThat(manager.getFreeTime(), is(50));
         assertThat(manager.getWorkTime(), is(50));
-        assertThat(manager.getFistName(), is(equalTo("Julien")));
+        assertThat(manager.getFirstName(), is(equalTo("Julien")));
         assertThat(manager.getLastName(), is(equalTo("Rouziere")));
     }
 
@@ -80,7 +80,7 @@ public class PersonServiceTest {
 
         assertThat(managers.size(), equalTo(1));
         assertThat(managers.get(0).getId(), equalTo(3L));
-        assertThat(managers.get(0).getFistName(), equalTo("Julien"));
+        assertThat(managers.get(0).getFirstName(), equalTo("Julien"));
 
         List<Person> others = allPersons.stream()
                 .filter(person -> !(person instanceof Manager))
@@ -96,7 +96,7 @@ public class PersonServiceTest {
         assertThat(allManagers.size(), equalTo(1));
         Manager manager = allManagers.get(0);
         assertThat(manager.getId(), equalTo(3L));
-        assertThat(manager.getFistName(), equalTo("Julien"));
+        assertThat(manager.getFirstName(), equalTo("Julien"));
     }
 
 }

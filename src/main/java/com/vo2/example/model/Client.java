@@ -2,6 +2,7 @@ package com.vo2.example.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by VO2 on 04/04/2017.
@@ -24,6 +25,9 @@ public class Client implements Serializable {
     @OneToOne(optional = false)
     @JoinColumn(name="address_id", unique=true, nullable=false, updatable=false)
     private Address address;
+    
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "clients")
+    private List<Person> persons;
 
     public Long getId() {
         return id;
@@ -48,4 +52,19 @@ public class Client implements Serializable {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<Person> persons) {
+        this.persons = persons;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" + "id=" + id + ", name=" + name + ", address=" + address + '}';
+    }
+    
+    
 }

@@ -5,6 +5,7 @@
  */
 package com.vo2.example.dao;
 
+import com.vo2.example.model.Client;
 import com.vo2.example.model.Manager;
 import com.vo2.example.model.Person;
 import javax.persistence.EntityManager;
@@ -27,7 +28,6 @@ public class PersonDAOImpl implements IPersonDAO {
     private EntityManager em;
 
     @Override
-    @Transactional
     public Person findPersonById(Long id) {
         return em.find(Person.class, id);
     }
@@ -49,6 +49,11 @@ public class PersonDAOImpl implements IPersonDAO {
         Query query = em.createQuery("FROM Person WHERE firstName LIKE :name OR lastName LIKE :name");
         query.setParameter("name", name);
         return query.getResultList();
+    }
+    
+    @Override
+    public List<Client> getPersonClients(Long id) {
+        return em.find(Person.class, id).getClients();
     }
     
 }

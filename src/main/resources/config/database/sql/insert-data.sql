@@ -17,8 +17,8 @@ INSERT INTO client (client_id, client_name, address_id) VALUES
   (1, 'VO2 Group', 1),
   (2, 'UFF', 2);
 
-INSERT INTO mission (person_id,  client_id, title, from_date, to_date) VALUES
-  (1, 2, 'Mission JAVA/JEE', '2016-12-01', null),
-  (1, 1, 'JAVA/Babyfoot', '2015-06-01', '2016-11-30'),
-  (2, 2, 'Babyfoot', '2017-02-15', '2017-04-06'),
-  (3, 1, 'CTO', '2014-05-01', null);
+INSERT INTO mission (person_id,  client_id) VALUES
+  (1, 2),
+  (1, 1),
+  (2, 2),
+  (3, 1);

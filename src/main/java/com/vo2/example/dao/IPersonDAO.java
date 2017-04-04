@@ -5,6 +5,7 @@
  */
 package com.vo2.example.dao;
 
+import com.vo2.example.model.Client;
 import com.vo2.example.model.Manager;
 import com.vo2.example.model.Person;
 
@@ -23,5 +24,7 @@ public interface IPersonDAO {
     List<Manager> findAllManagers();
     
     List<Person> searchPersonsByName(String name);
+    
+    List<Client> getPersonClients(Long id);
 
 }

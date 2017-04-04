@@ -5,6 +5,7 @@
  */
 package com.vo2.example.services;
 
+import com.vo2.example.model.Client;
 import com.vo2.example.model.Manager;
 import com.vo2.example.model.Person;
 
@@ -22,5 +23,7 @@ public interface IPersonService {
     List<Manager> findAllManager();
     
     List<Person> getPersonsByName(String name);
+    
+    List<Client> getPersonClients(Long id);
 
 }

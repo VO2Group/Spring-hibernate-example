@@ -6,7 +6,20 @@
 package com.vo2.example.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 /**
  *
@@ -27,6 +40,13 @@ public class Person implements Serializable {
     
     @Column(name="last_name")
     private String lastName;
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "mission", joinColumns = {
+                @JoinColumn(name = "person_id", nullable = false, updatable = false) },
+		inverseJoinColumns = { @JoinColumn(name = "client_id",
+			nullable = false, updatable = false) })
+    private List<Client> clients;
 
     public Long getId() {
         return id;
@@ -36,12 +56,12 @@ public class Person implements Serializable {
         this.id = id;
     }
 
-    public String getFistName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFistName(String fistName) {
-        this.firstName = fistName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -50,6 +70,19 @@ public class Person implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + '}';
     }
     
     

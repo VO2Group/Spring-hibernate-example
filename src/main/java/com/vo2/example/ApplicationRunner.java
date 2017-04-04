@@ -1,3 +1,4 @@
+package com.vo2.example;
 
 import com.vo2.example.model.Person;
 import com.vo2.example.services.IPersonService;
@@ -14,7 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  * @author mehdi
  */
-public class run {
+public class ApplicationRunner {
 
     /**
      * @param args the command line arguments

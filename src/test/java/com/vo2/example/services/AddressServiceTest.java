@@ -23,8 +23,8 @@ public class AddressServiceTest {
     @Test
     public void getAddressByIdShouldLoadAddress() throws Exception {
         Address address = addressService.getAddressById(1L);
-        assertThat(address, is(not(nullValue())));
-        assertThat(address.getCountry(), is(not(nullValue())));
+        assertThat(address, is(notNullValue()));
+        assertThat(address.getCountry(), is(notNullValue()));
         assertThat(address.getCountry().getName(), is(equalTo("France")));
     }
 

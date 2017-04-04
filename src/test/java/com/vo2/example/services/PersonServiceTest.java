@@ -70,7 +70,7 @@ public class PersonServiceTest {
     @Test
     public void findAllShouldReturnAllPersons() {
         List<Person> allPersons = personService.findAll();
-        assertThat(allPersons, is(not(nullValue())));
+        assertThat(allPersons, is(notNullValue()));
         assertThat(allPersons.size(), equalTo(3));
 
         List<Manager> managers = allPersons.stream()
@@ -92,7 +92,7 @@ public class PersonServiceTest {
     @Test
     public void findAllManagersShouldReturnOnlyManagers() {
         List<Manager> allManagers = personService.findAllManager();
-        assertThat(allManagers, is(not(nullValue())));
+        assertThat(allManagers, is(notNullValue()));
         assertThat(allManagers.size(), equalTo(1));
         Manager manager = allManagers.get(0);
         assertThat(manager.getId(), equalTo(3L));

@@ -22,7 +22,7 @@ public class Client implements Serializable {
     ////////////////////////
     //  LES RELATIONS
     ////////////////////////
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="address_id", unique=true, nullable=false, updatable=false)
     private Address address;
     
@@ -63,7 +63,7 @@ public class Client implements Serializable {
 
     @Override
     public String toString() {
-        return "Client{" + "id=" + id + ", name=" + name + ", address=" + address + '}';
+        return "Client{" + "id=" + id + ", name=" + name + '}';
     }
     
     

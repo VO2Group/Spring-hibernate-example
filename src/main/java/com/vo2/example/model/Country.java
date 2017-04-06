@@ -1,6 +1,7 @@
 package com.vo2.example.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by VO2 on 04/04/2017.

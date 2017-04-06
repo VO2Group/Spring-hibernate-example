@@ -1,9 +1,7 @@
 package com.vo2.example.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by VO2 on 04/04/2017.
@@ -19,6 +17,12 @@ public class Manager extends Person {
     @Column(name = "work_time")
     private Integer workTime;
 
+    ////////////////////////
+    //  LES RELATIONS
+    ////////////////////////
+    @OneToMany(mappedBy = "manager", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Person> consultants;
+
     public Integer getFreeTime() {
         return freeTime;
     }
@@ -33,5 +37,21 @@ public class Manager extends Person {
 
     public void setWorkTime(Integer workTime) {
         this.workTime = workTime;
+    }
+
+    public List<Person> getConsultants() {
+        return consultants;
+    }
+
+    public void setConsultants(List<Person> consultants) {
+        this.consultants = consultants;
+    }
+
+    @Override
+    public String toString() {
+        return "Manager{" +
+                "freeTime=" + freeTime +
+                ", workTime=" + workTime +
+                "} " + super.toString();
     }
 }

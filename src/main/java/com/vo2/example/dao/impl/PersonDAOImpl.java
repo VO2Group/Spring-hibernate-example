@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vo2.example.dao;
+package com.vo2.example.dao.impl;
 
+import com.vo2.example.dao.IPersonDAO;
 import com.vo2.example.model.Client;
 import com.vo2.example.model.Manager;
 import com.vo2.example.model.Person;
@@ -33,6 +34,17 @@ public class PersonDAOImpl implements IPersonDAO {
     }
 
     @Override
+    public Person save(Person person) {
+        return em.merge(person);
+    }
+
+    @Override
+    public void detach(Person person) {
+        em.detach(person);
+    }
+
+
+    @Override
     public List<Person> findAll() {
         TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p", Person.class);
         return query.getResultList();
@@ -43,7 +55,7 @@ public class PersonDAOImpl implements IPersonDAO {
         TypedQuery<Manager> query = em.createQuery("SELECT m FROM Manager m", Manager.class);
         return query.getResultList();
     }
-    
+
     @Override
     public List<Person> searchPersonsByName(String name) {
         Query query = em.createQuery("FROM Person WHERE firstName LIKE :name OR lastName LIKE :name");

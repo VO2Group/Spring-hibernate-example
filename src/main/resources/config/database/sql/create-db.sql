@@ -1,26 +1,29 @@
 CREATE TABLE person (
-  person_id  BIGINT  PRIMARY KEY,
+  person_id  BIGINT IDENTITY PRIMARY KEY,
   first_name VARCHAR(30),
-  last_name  VARCHAR(50)
+  last_name  VARCHAR(50),
+  manager_id BIGINT NULL
 );
 
 CREATE TABLE manager (
   person_id BIGINT PRIMARY KEY,
   free_time INTEGER,
   work_time INTEGER,
-  CONSTRAINT FK_MANAGER_PERSON FOREIGN KEY (person_id) REFERENCES person,
+  CONSTRAINT FK_MANAGER_PERSON FOREIGN KEY (person_id) REFERENCES person(person_id),
   CONSTRAINT CK_manager_prct CHECK (free_time + work_time = 100)
 );
 
+ALTER TABLE person ADD CONSTRAINT FK_PERSON_MANAGER FOREIGN KEY (manager_id) REFERENCES manager(person_id);
+
 CREATE TABLE country (
-  country_id BIGINT PRIMARY KEY,
+  country_id BIGINT IDENTITY PRIMARY KEY,
   country_name VARCHAR(50) NOT NULL,
   CONSTRAINT UK_COUNTRY_NAME UNIQUE (country_name)
 );
 
 
 CREATE TABLE address (
-  address_id BIGINT  PRIMARY KEY,
+  address_id BIGINT IDENTITY PRIMARY KEY,
   address_line_1 VARCHAR(150),
   address_line_2 VARCHAR(150),
   zip_code VARCHAR(5),
@@ -31,7 +34,7 @@ CREATE TABLE address (
 
 
 CREATE TABLE client (
-  client_id BIGINT  PRIMARY KEY,
+  client_id BIGINT IDENTITY PRIMARY KEY,
   client_name VARCHAR(30),
   address_id BIGINT not NULL,
   CONSTRAINT FK_CLIENT_ADDRESS FOREIGN KEY (address_id) REFERENCES address(address_id),

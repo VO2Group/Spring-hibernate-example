@@ -18,6 +18,10 @@ import java.util.List;
 public interface IPersonService {
     Person getPersonById(Long id);
 
+    Person saveOrUpdate(Person person);
+
+    void detach(Person person);
+
     List<Person> findAll();
 
     List<Manager> findAllManager();
@@ -26,4 +30,5 @@ public interface IPersonService {
     
     List<Client> getPersonClients(Long id);
 
+    void updateWorkTime(Manager manager, int i);
 }

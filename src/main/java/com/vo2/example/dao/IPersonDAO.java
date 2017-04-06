@@ -19,6 +19,10 @@ public interface IPersonDAO {
     
     Person findPersonById(Long id);
 
+    Person save(Person person);
+
+    void detach(Person person);
+
     List<Person> findAll();
 
     List<Manager> findAllManagers();

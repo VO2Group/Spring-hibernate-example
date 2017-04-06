@@ -1,10 +1,12 @@
 INSERT INTO person (person_id, first_name, last_name) VALUES
   (1, 'Mehdi', 'Hakka'),
   (2, 'Amine', 'Abbes'),
-  (3, 'Julien', 'Rouziere');
+  (3, 'Julien', 'Rouzieres');
 
 INSERT INTO manager (person_id, free_time, work_time) VALUES
   (3, 50, 50);
+
+UPDATE person SET manager_id = 3 WHERE person_id in (1, 2);
 
 INSERT INTO country (country_id, country_name) VALUES
   (1, 'France');

@@ -26,7 +26,7 @@ public class Client implements Serializable {
     @JoinColumn(name="address_id", unique=true, nullable=false, updatable=false)
     private Address address;
     
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "clients")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "clients")
     private List<Person> persons;
 
     public Long getId() {

@@ -1,5 +1,6 @@
-package com.vo2.example.dao;
+package com.vo2.example.dao.impl;
 
+import com.vo2.example.dao.IAddressDAO;
 import com.vo2.example.model.Address;
 import org.springframework.stereotype.Repository;
 

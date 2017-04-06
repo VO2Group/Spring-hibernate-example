@@ -7,19 +7,7 @@ package com.vo2.example.model;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -40,8 +28,15 @@ public class Person implements Serializable {
     
     @Column(name="last_name")
     private String lastName;
-    
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+    ////////////////////////
+    //  LES RELATIONS
+    ////////////////////////
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(name="manager_id", nullable=true, updatable=true)
+    private Manager manager;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "mission", joinColumns = {
                 @JoinColumn(name = "person_id", nullable = false, updatable = false) },
 		inverseJoinColumns = { @JoinColumn(name = "client_id",
@@ -78,6 +73,14 @@ public class Person implements Serializable {
 
     public void setClients(List<Client> clients) {
         this.clients = clients;
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
     }
 
     @Override
